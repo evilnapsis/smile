@@ -114,3 +114,17 @@ create table post_image(
 	foreign key (post_id) references post(id),
 	foreign key (image_id) references image(id)
 );
+
+/**
+* type_id:
+* 1.- post
+* 2.- image
+**/
+create table heart(
+	id int not null auto_increment primary key,
+	type_id int not null default 1,
+	ref_id int not null,
+	user_id int not null,
+	created_at datetime not null,
+	foreign key (user_id) references user(id)
+);

@@ -74,3 +74,49 @@ $levels =LevelData::getAll();
 
 
 </div>
+<script>
+  $(".buttons").hide();
+  $("#statusarea").focus(function(){
+    $(".buttons").show("fast");
+    $(this).prop("rows",3);
+  });
+
+  $("#statusarea").blur(function(){
+    if($(this).val()==""){
+      $(".buttons").hide("fast");
+      $(this).prop("rows",1);
+    }
+  });
+function like(type,id){
+  var base = "lk";
+  if(type==2){ base = "ilk"; }
+  $.post("index.php?action=addheart","t="+type+"&r="+id,function(data){
+  $("a#"+base+"-"+id).html("<i class='fa fa-thumbs-up'></i> "+data);
+  });
+
+  console.log($("a#"+base+"-"+id));
+
+
+  if($("a#"+base+"-"+id).hasClass("btn-default")){
+    $("a#"+base+"-"+id).removeClass("btn-default");
+    $("a#"+base+"-"+id).addClass("btn-primary");
+  }else if($("a#"+base+"-"+id).hasClass("btn-primary")){
+    $("a#"+base+"-"+id).removeClass("btn-primary");
+    $("a#"+base+"-"+id).addClass("btn-default");   
+  }
+
+
+}
+/*  $("#publish").click(function(){
+    var data = $("#status").serialize();
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET","./?r=users/publish&"+data,false);
+    xhr.send();
+    $("#statuses").prepend(xhr.responseText);
+    $("#statusarea").val("");
+    $(".buttons").hide("fast");
+    $("#statusarea").prop("rows",2);
+
+  });
+*/
+</script>

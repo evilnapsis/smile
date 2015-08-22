@@ -53,6 +53,19 @@ if(file_exists($fullpath)):?>
         </div>
         <div class="modal-body">
 <img src="<?php echo $fullpath; ?>" class="img-responsive">
+<p>
+        <?php 
+        $l = HeartData::getByRUT($pi->image_id,$_SESSION["user_id"],2);
+        $c = HeartData::countByRT($pi->image_id,2)->c;
+        $b = "btn-default";
+        if($l!=null){ $b="btn-primary";}
+        ?>
+        <?php if($l==null):?>
+        <a href="javascript:void()" onclick="like(2,<?php echo $pi->image_id; ?>)" id="ilk-<?php echo $p->id; ?>" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+      <?php else:?>
+        <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+      <?php endif; ?>
+</p>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -62,6 +75,19 @@ if(file_exists($fullpath)):?>
 <br><?php endif; ?>
 <?php endforeach;?>
 <?php endif; ?>
+        <p>
+        <?php 
+        $l = HeartData::getByRUT($p->id,$_SESSION["user_id"],1);
+        $c = HeartData::countByRT($p->id,1)->c;
+        $b = "btn-default";
+        if($l!=null){ $b="btn-primary";}
+        ?>
+        <?php if($l==null):?>
+        <a href="javascript:void()" onclick="like(1,<?php echo $p->id; ?>)" id="lk-<?php echo $p->id; ?>" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+      <?php else:?>
+        <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+      <?php endif; ?>
+</p>
 <form role="form" id="status">
   <div class="form-group" style="max-width:100%;">
 
