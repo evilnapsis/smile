@@ -1,5 +1,6 @@
 <?php
-
- print_r($params);
-
+/**
+* @author evilnapsis
+* @brief Descripcion
+**/
 ?>

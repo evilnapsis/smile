@@ -12,10 +12,13 @@ class PostData {
 		$this->created_at = "NOW()";
 	}
 
+	public function getAuthor(){ return UserData::getById($this->author_ref_id); }
+	public function getReceptor(){ return UserData::getById($this->receptor_ref_id); }
+
 	public function add(){
-		$sql = "insert into ".self::$tablename." (title,content,image,user_id,is_public,created_at) ";
-		$sql .= "value (\"$this->title\",\"$this->content\",\"$this->image\",$this->user_id,$this->is_public,$this->created_at)";
-		Executor::doit($sql);
+		$sql = "insert into ".self::$tablename." (content,author_ref_id,receptor_ref_id,level_id,created_at) ";
+		$sql .= "value (\"$this->content\",\"$this->author_ref_id\",$this->receptor_ref_id,1,$this->created_at)";
+		return Executor::doit($sql);
 	}
 
 	public static function delById($id){
@@ -47,6 +50,11 @@ class PostData {
 		return Model::many($query[0],new PostData());
 	}
 
+	public static function getAllByUserId($user_id){
+		$sql = "select * from ".self::$tablename." where author_ref_id=$user_id or receptor_ref_id=$user_id order by created_at desc";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new PostData());
+	}
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where title like '%$q%' or content like '%$q%'";

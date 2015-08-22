@@ -31,5 +31,8 @@ include "controller/Lb.php";
 // 26 diciembre 2014
 include "controller/Form.php";
 
+// 22 agosto 2015
+include "controller/class.upload.php";
+
 
 ?>

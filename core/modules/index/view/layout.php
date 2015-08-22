@@ -36,7 +36,7 @@ if(Session::exists("user_id")){
 <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Perfil</a></li>
+          <li><a href="./?view=home">Perfil</a></li>
           <li class="divider"></li>
           <li><a href="./?action=processlogout">Salir</a></li>
         </ul>
