@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Usando Legobox 3.6</title>
+<title>SMILE :) | Red Social de Proposito General</title>
 <link rel="stylesheet" type="text/css" href="res/bootstrap/css/bootstrap.min.css">
 <script src="res/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="res/font-awesome/css/font-awesome.min.css">
@@ -17,11 +17,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">LegoBox</a>
+      <a class="navbar-brand" href="./" style="color:yellow;"><i class="fa fa-smile-o"></i> SMILE</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-          <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+          <li><a href="./">INICIO</a></li>
       </ul>
     </nav>
   </div>
