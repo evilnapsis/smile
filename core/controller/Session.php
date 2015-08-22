@@ -1,26 +1,76 @@
 <?php
 
 
-// 13 de Octubre del 2014
+// 24 de Marzo del 2015
 // Session.php
 // @brief esto es algo mucho mas magico
 
 class Session {
-	function __get($value){
-		if(!$this->exist($value)){
-			print "<b>SESSION ERROR</b> El parametro <b>$value</b> que intentas llamar no existe!";
-			die();
+
+	public static $user= null;
+
+	public static $flashmsg = array();
+
+	public static function get($key){
+		if(Session::exists($key)){
+			return $_SESSION[$key];
 		}
-		return $_SESSION[$value];
 	}
 
-	function  exist($value){
-		$found = false;
-		if(isset($_SESSION[$value])){
-			$found=true;
+	public static function exists($key){
+		if(isset($_SESSION[$key])){
+			return true;
 		}
-		return $found;
+		return false;
 	}
+
+	public static function set($key,$value){
+		$_SESSION[$key]=$value;
+
+	}
+
+	public static function delete($key){
+		unset($_SESSION[$key]);
+	}
+
+
+	public function setFlashMsg($name,$message){
+		Session::set("_flash_".$name,$message);
+	}
+
+	public function getFlashMsgs(){
+		$arr = array();
+		foreach($_SESSION as $k=>$v){
+			$trig = "_flash_";
+			//echo $session;
+			if(strlen($k)>strlen($trig)){
+				$fl = substr($k, 0,strlen($trig));
+				if($fl==$trig){
+					$arr[]=Session::get($k);
+					Session::delete($k);
+				}
+			}
+		}
+		return $arr;
+	}
+
+
+	public function deleteFlashMsg($name){
+		Session::delete("_flash_".$name);
+	}
+
+
+	public function getFlashMsg($name){
+		if(Session::exists("_flash_".$name)){
+		print_r($_SESSION[$name]);
+			$v= Session::get("_flash_".$name);
+			Session::deleteFlashMsg($name);
+			return $v;
+		}else{
+			return false;
+		}
+	}
+
 }
 
 

@@ -1,3 +1,10 @@
+<?php
+
+if(Session::exists("user_id")){
+  Session::$user = UserData::getById(Session::get("user_id"));
+}
+
+?>
 <html>
 <head>
 <title>SMILE :) | Red Social de Proposito General</title>
@@ -23,6 +30,38 @@
       <ul class="nav navbar-nav">
           <li><a href="./">INICIO</a></li>
       </ul>
+
+<ul class="nav navbar-nav navbar-right">
+<?php if(Session::exists("user_id")):?>
+<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Perfil</a></li>
+          <li class="divider"></li>
+          <li><a href="./?action=processlogout">Salir</a></li>
+        </ul>
+      </li>
+  <?php else:?>
+<li>
+      <form class="navbar-form navbar-left" role="search" method="post" action="./?action=processlogin">
+      <div class="form-group">
+      <input type="hidden" name="r" value="search/results">
+<div class="row">
+<div class="col-md-6">
+        <input type="text"  name="email" class="form-control" placeholder="Email" required>
+</div>
+<div class="col-md-6">
+        <input type="password"  name="password" class="form-control" placeholder="Contrase&ntilde;a" required>
+</div>
+</div>
+      </div>
+      <button type="submit" class="btn btn-default">Entrar</button>
+    </form>
+</li>
+<?php endif; ?>
+</ul>
+
+
     </nav>
   </div>
 </header>
