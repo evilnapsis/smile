@@ -31,6 +31,17 @@
 	View::load("index");
 ?>
 <!-- - - - - - - - - - - - - - - -->
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+<h4>ENLACES</h4>
+<ul>
+  <li><a href="./?view=changelog">Log de Cambios</a></li>
+  <li><a href="http://evilnapsis.com">Evilnapsis HomePage</a></li>
+</ul>
+</div>
+</div>
+</div>
 <script src="res/jquery.min.js"></script>
 <script src="res/bootstrap/js/bootstrap.min.js"></script>
 </body>
