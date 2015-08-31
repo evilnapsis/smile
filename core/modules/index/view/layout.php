@@ -2,6 +2,7 @@
 
 if(Session::exists("user_id")){
   Session::$user = UserData::getById(Session::get("user_id"));
+  Session::$profile = ProfileData::getByUserId(Session::get("user_id"));
 }
 
 ?>

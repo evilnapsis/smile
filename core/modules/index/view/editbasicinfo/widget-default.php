@@ -7,7 +7,7 @@ $levels =LevelData::getAll();
 <div class="row">
     <div class="col-md-3">
 <div class="well">
-<?php Action::execute("_userbadge",array("user"=>Session::$user));?>
+<?php Action::execute("_userbadge",array("user"=>Session::$user,"profile"=>Session::$profile));?>
 <div class="list-group">
   <a href="./?view=editinformation" class="list-group-item">Informacion Personal</a>
   <a href="./?view=editbasicinfo" class="list-group-item">Informacion Basica</a>

@@ -8,6 +8,7 @@
 class Session {
 
 	public static $user= null;
+	public static $profile= null;
 
 	public static $flashmsg = array();
 

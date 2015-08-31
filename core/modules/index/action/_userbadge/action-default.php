@@ -1,7 +1,10 @@
+<?php
+$url = "storage/users/".$params["user"]->id."/profile/".$params["profile"]->image;
+?>
 <div class="well">
 <div class="row">
 <div class="col-md-4">
-<img src="res/images/yo.jpg" class="img-responsive img-thumbnail">
+<img src="<?php echo $url; ?>" class="img-responsive img-thumbnail">
 </div>
 <div class="col-md-8">
 <h5><?php echo $params["user"]->getFullname(); ?></h5>

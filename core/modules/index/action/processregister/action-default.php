@@ -21,8 +21,13 @@
 					$user->email = $_POST["email"];
 					$user->password = sha1(md5($_POST["password"]));
 					$user->code = $code;
-					$user->add();
-	
+					$u = $user->add();
+
+					$p =  new ProfileData();
+					$p->user_id = $u[1];
+					$p->add();
+
+
 					$msg = "<body><h1>Registro Exitoso</h1>
 					<p>Ahora debes activar tu cuenta en el siguiente link:</p>
 					<p><a href='http://youhost/app/index.php?r=index/processactivation&e=".sha1(md5($_POST["email"]))."&c=".sha1(md5($code))."'>Activa tu cuenta:</a></p>
