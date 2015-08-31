@@ -6,35 +6,36 @@ $levels =LevelData::getAll();
 <div class="container">
 <div class="row">
     <div class="col-md-3">
-<div class="well">
 <?php Action::execute("_userbadge",array("user"=>Session::$user));?>
-<div class="list-group">
-  <a href="./?view=editinformation" class="list-group-item">Informacion Personal</a>
-</div>
+<?php Action::execute("_infomenu",array());?>
+
     </div>
     <div class="col-md-7">
 <h1>Editar Informacion</h1>
 
-<form role="form">
+<form role="form" enctype="multipart/form-data" method="post" action="./?action=updateinformation">
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="exampleInputFile">Imagen de Perfil (100x100)</label>
+    <input type="file" name="image">
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
+    <label for="exampleInputEmail1">Titulo</label>
+    <input type="text" name="title" class="form-control"  placeholder="A que te dedicas??">
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Sobre ti</label>
+    <textarea name="bio"  class="form-control" placeholder="Hablanos de ti"></textarea>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Intereses</label>
+    <textarea name="likes"  class="form-control" placeholder="Que te gusta?"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">No intereses</label>
+    <textarea name="dislikes"  class="form-control" placeholder="Que no te gusta?"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Actualizar Informacion</button>
 </form>
 
     </div>

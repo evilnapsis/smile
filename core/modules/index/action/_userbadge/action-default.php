@@ -1,3 +1,4 @@
+<div class="well">
 <div class="row">
 <div class="col-md-4">
 <img src="res/images/yo.jpg" class="img-responsive img-thumbnail">
