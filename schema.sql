@@ -44,6 +44,13 @@ create table country(
 
 insert into country(name,preffix) values ("Mexico","mx"),("Argentina","ar"),("Espa~a","es"),("Estados Unidos","eu"),("Chile","cl"),("Colombia","co"),("Peru","pe");
 
+create table sentimental(
+	id int not null auto_increment primary key,
+	name varchar(50)
+);
+
+insert into sentimental(name) values ("Soltero"),("Casado");
+
 create table profile(
 	day_of_birth date not null,
 	gender varchar(1) not null,
@@ -51,11 +58,15 @@ create table profile(
 	image varchar(255),
 	image_header varchar(255),
 	bio varchar(255),
+	likes text,
+	dislikes text,
 	address varchar(255) not null,
 	phone varchar(255) not null,
 	public_email varchar(255) not null,
 	user_id int not null,
 	level_id int not null,
+	sentimental_id int not null,
+	foreign key (sentimental_id) references sentimental(id),
 	foreign key (country_id) references country(id),
 	foreign key (level_id) references level(id),
 	foreign key (user_id) references user(id)

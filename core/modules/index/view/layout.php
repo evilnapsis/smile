@@ -15,7 +15,7 @@ if(Session::exists("user_id")){
 </head>
 
 <body>
-<header class="navbar navbar-inverse navbar-static-top" role="banner">
+<header class="navbar navbar-default navbar-static-top" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -24,7 +24,7 @@ if(Session::exists("user_id")){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./" style="color:yellow;"><i class="fa fa-smile-o"></i> SMILE</a>
+      <a class="navbar-brand" href="./"><i class="fa fa-smile-o"></i> SMILE</a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -37,6 +37,8 @@ if(Session::exists("user_id")){
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="./?view=home">Perfil</a></li>
+          <li><a href="./?view=home">Perfil Publico</a></li>
+          <li><a href="./?view=home">Editar Informacion</a></li>
           <li class="divider"></li>
           <li><a href="./?action=processlogout">Salir</a></li>
         </ul>

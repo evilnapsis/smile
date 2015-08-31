@@ -3,12 +3,14 @@ $posts = PostData::getAllByUserId(Session::get("user_id"));
 ?>
 <?php if(count($posts)>0):?>
 	<div id="statuses">
+<table class="table table-bordered">
 <?php 
 /* Obtener las imagenes asociadas a un post/status */
 foreach($posts as $p):
 //$pis = $p->getPIS();
 ?>
-<div class="thumbnail" style="padding-bottom:0;">
+<tr>
+<td>
       <div class="caption" style="padding-bottom:0;">
 
 <!-- Single button -->
@@ -96,7 +98,9 @@ if(file_exists($fullpath)):?>
 </form>
 
       </div>
-    </div><br>
+      </td>
+    </tr>
 <?php endforeach;?>
+</table>
 </div>
 <?php endif;?>

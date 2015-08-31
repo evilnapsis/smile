@@ -13,7 +13,7 @@ $levels =LevelData::getAll();
 </div>
 <div class="col-md-8">
 <h5><?php echo Session::$user->getFullname(); ?></h5>
-<a href="./?view=editprofile" class="btn btn-default btn-xs">Editar perfil</a>
+<a href="./?view=editinformation" class="btn btn-default btn-xs">Editar Informacion</a>
 </div>
 </div>
 </div>
@@ -75,26 +75,12 @@ $levels =LevelData::getAll();
 
 </div>
 <script>
-  $(".buttons").hide();
-  $("#statusarea").focus(function(){
-    $(".buttons").show("fast");
-    $(this).prop("rows",3);
-  });
-
-  $("#statusarea").blur(function(){
-    if($(this).val()==""){
-      $(".buttons").hide("fast");
-      $(this).prop("rows",1);
-    }
-  });
 function like(type,id){
   var base = "lk";
   if(type==2){ base = "ilk"; }
   $.post("index.php?action=addheart","t="+type+"&r="+id,function(data){
   $("a#"+base+"-"+id).html("<i class='fa fa-thumbs-up'></i> "+data);
   });
-
-  console.log($("a#"+base+"-"+id));
 
 
   if($("a#"+base+"-"+id).hasClass("btn-default")){
