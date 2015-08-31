@@ -1,6 +1,7 @@
 <?php
 $user = UserData::getById($_GET["id"]);
 if($user!=null):
+//if($user==Session::$user){ Core::redir("./?view=home");}
 $profile = ProfileData::getByUserId($_GET["id"]);
 
 ?>

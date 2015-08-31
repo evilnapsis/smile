@@ -17,7 +17,7 @@ $url = "storage/users/".$user->id."/profile/".$profile->image;
 <div class="col-md-8">
 <h5><?php echo $user->getFullname(); ?></h5>
 <?php if($from=="logout"):?>
-<a href="./?view=editinformation" class="btn btn-default btn-xs">Editar Informacion</a>
+<!-- NO se muestra ningun boton -->
 <?php else:?>
 <?php if($user->id==Session::$user->id):?>
 <a href="./?view=editinformation" class="btn btn-default btn-xs">Editar Informacion</a>

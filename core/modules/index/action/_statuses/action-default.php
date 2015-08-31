@@ -1,4 +1,6 @@
 <?php 
+
+$from = $params["from"];
 $user = $params["user"];
 
 $posts = PostData::getAllByUserId($user->id);
@@ -46,14 +48,17 @@ if(file_exists($fullpath)):?>
         </div>
         <div class="modal-body">
 <img src="<?php echo $fullpath; ?>" class="img-responsive">
-<p>
+<br><p>
         <?php 
+        $l=null;
+        if($from == "logged" ){
         $l = HeartData::getByRUT($pi->image_id,$_SESSION["user_id"],2);
+        }
         $c = HeartData::countByRT($pi->image_id,2)->c;
         $b = "btn-default";
         if($l!=null){ $b="btn-primary";}
         ?>
-        <?php if($l==null):?>
+        <?php if($l!=null):?>
         <a href="javascript:void()" onclick="like(2,<?php echo $pi->image_id; ?>)" id="ilk-<?php echo $p->id; ?>" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php else:?>
         <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
@@ -70,7 +75,10 @@ if(file_exists($fullpath)):?>
 <?php endif; ?>
         <p>
         <?php 
+        $l=null;
+        if($from=="logged"){
         $l = HeartData::getByRUT($p->id,$user->id,1);
+        }
         $c = HeartData::countByRT($p->id,1)->c;
         $b = "btn-default";
         if($l!=null){ $b="btn-primary";}
@@ -81,13 +89,14 @@ if(file_exists($fullpath)):?>
         <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php endif; ?>
 </p>
+<?php if($from=="logged"):?>
 <form role="form" id="status">
   <div class="form-group" style="max-width:100%;">
 
     <textarea rows="1" name="content" class="form-control" placeholder="Escribe un comentario"></textarea>
   </div>
 </form>
-
+<?php endif; ?>
       </div>
       </td>
     </tr>
