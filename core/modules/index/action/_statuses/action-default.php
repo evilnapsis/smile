@@ -1,5 +1,7 @@
 <?php 
-$posts = PostData::getAllByUserId(Session::get("user_id"));
+$user = $params["user"];
+
+$posts = PostData::getAllByUserId($user->id);
 ?>
 <?php if(count($posts)>0):?>
 	<div id="statuses">
@@ -12,18 +14,6 @@ foreach($posts as $p):
 <tr>
 <td>
       <div class="caption" style="padding-bottom:0;">
-
-<!-- Single button -->
-<div class="btn-group pull-right">
-  <button type="button" class="btn btn-default dropdown-toggle btn-xs " data-toggle="dropdown">
-    <i class="fa fa-chevron-down"></i>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Editar</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Eliminar</a></li>
-  </ul>
-</div>
 <?php 
 $authordata = $p->getAuthor();
 $pf = ProfileData::getByUserId($authordata->id);
@@ -80,7 +70,7 @@ if(file_exists($fullpath)):?>
 <?php endif; ?>
         <p>
         <?php 
-        $l = HeartData::getByRUT($p->id,$_SESSION["user_id"],1);
+        $l = HeartData::getByRUT($p->id,$user->id,1);
         $c = HeartData::countByRT($p->id,1)->c;
         $b = "btn-default";
         if($l!=null){ $b="btn-primary";}

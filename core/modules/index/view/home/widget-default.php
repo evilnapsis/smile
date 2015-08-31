@@ -6,17 +6,8 @@ $levels =LevelData::getAll();
 <div class="container">
 <div class="row">
     <div class="col-md-3">
-<div class="well">
-<div class="row">
-<div class="col-md-4">
-<img src="res/images/yo.jpg" class="img-responsive img-thumbnail">
-</div>
-<div class="col-md-8">
-<h5><?php echo Session::$user->getFullname(); ?></h5>
-<a href="./?view=editinformation" class="btn btn-default btn-xs">Editar Informacion</a>
-</div>
-</div>
-</div>
+<?php Action::execute("_userbadge",array("user"=>Session::$user,"profile"=>Session::$profile,"from"=>"logged" ));?>
+
 <div class="list-group">
   <a href="./?view=myfriends" class="list-group-item">Amigos</a>
   <a href="./?view=myphotos" class="list-group-item">Fotos</a>
@@ -61,7 +52,7 @@ $levels =LevelData::getAll();
 </form>
     </div>
     </div>
-    <?php echo Action::execute("_statuses",null);?>
+    <?php echo Action::execute("_statuses",array("user"=>Session::$user,"profile"=>Session::$profile,"from"=>"logged"));?>
       <!-- -->
 
 

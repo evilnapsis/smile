@@ -1,5 +1,5 @@
 <body><h1>Registro Exitoso</h1>
 					<p>Ahora debes activar tu cuenta en el siguiente link:</p>
-					<p><a href='http://youhost/app/index.php?r=index/processactivation&e=fc56ef7962858dcff10b83ac85cbde5f0d2c11d6&c=49d6fa594af728fe37ce9f61ce2c7f36f795c19f'>Activa tu cuenta:</a></p>
-					<p>O tambien puedes usar el siguiente codigo de activacion: v99zj5</p>
+					<p><a href='http://youhost/app/index.php?r=index/processactivation&e=5bc104465fce486c1927bc382080220f1b1f6d66&c=2e13eeec94b65d87e388823c9dbdae9be013e659'>Activa tu cuenta:</a></p>
+					<p>O tambien puedes usar el siguiente codigo de activacion: vhgp23</p>
 					</body>
