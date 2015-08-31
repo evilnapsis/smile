@@ -26,11 +26,12 @@ foreach($posts as $p):
 </div>
 <?php 
 $authordata = $p->getAuthor();
-if($authordata->image!=""):?>
-<img src="<?php echo "storage/users/".$authordata->id."/profile/".$authordata->image;?>" class="img-circle" style="width:38px;float:left;">
+$pf = ProfileData::getByUserId($authordata->id);
+if($pf->image!=""):?>
+<img src="<?php echo "storage/users/".$authordata->id."/profile/".$pf->image;?>" class="img-circle" style="width:38px;float:left;">
 <?php endif; ?>
       <h4 style="margin:0px;margin-left:48px;"><?php echo $authordata->getFullname();?></h4>
-<p style="margin:0px;margin-left:48px;" class="text-muted"><?php echo date("d/M/Y h:i:s",strtotime($p->created_at));?></p>
+<p style="margin:0px;margin-left:48px;font-size:10px;" class="text-muted"><?php echo date("d/M/Y h:i:s",strtotime($p->created_at));?></p>
 <div class="clearfix"></div>
       <hr style="margin:5px;">
         <p><?php echo $p->content; ?></p>

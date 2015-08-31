@@ -38,8 +38,8 @@ if(Session::exists("user_id")){
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="./?view=home">Perfil</a></li>
-          <li><a href="./?view=home">Perfil Publico</a></li>
-          <li><a href="./?view=home">Editar Informacion</a></li>
+          <li><a href="./?view=user&id=<?php echo Session::$user->id; ?>">Perfil Publico</a></li>
+          <li><a href="./?view=editinformation">Editar Informacion</a></li>
           <li class="divider"></li>
           <li><a href="./?action=processlogout">Salir</a></li>
         </ul>

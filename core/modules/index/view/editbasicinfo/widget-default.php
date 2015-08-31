@@ -1,41 +1,53 @@
 <?php
-
+$profile = Session::$profile;
 $levels =LevelData::getAll();
-
+$countries =CountryData::getAll();
+$sentimentals =SentimentalData::getAll();
+$genders = array("h"=>"Hombre","m"=>"Mujer");
 ?>
 <div class="container">
 <div class="row">
     <div class="col-md-3">
-<div class="well">
 <?php Action::execute("_userbadge",array("user"=>Session::$user,"profile"=>Session::$profile));?>
-<div class="list-group">
-  <a href="./?view=editinformation" class="list-group-item">Informacion Personal</a>
-  <a href="./?view=editbasicinfo" class="list-group-item">Informacion Basica</a>
-</div>
+<?php Action::execute("_infomenu",array());?>
+
     </div>
     <div class="col-md-7">
-<h1>Editar Informacion</h1>
+<h1>Editar Informacion Basica</h1>
 
-<form role="form">
+<form role="form" method="post" action="./?action=updatebasicinfo">
   <div class="form-group">
     <label for="exampleInputEmail1">Fecha de nacimiento</label>
-    <input type="date" class="form-control"  placeholder="Enter email">
+    <input type="date" value="<?php echo $profile->day_of_birth; ?>" name="day_of_birth" class="form-control" required placeholder="Enter email">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" placeholder="Password">
+    <label for="exampleInputPassword1">Sexo</label>
+    <select name="gender" class="form-control" required>
+      <option value="">-- SELECCIONE -- </option>
+    <?php foreach($genders as $k =>$v):?>
+      <option value="<?php echo $k; ?>" <?php if($k==$profile->gender){ echo "selected"; }?>><?php echo $v; ?></option>
+    <?php endforeach;?>
+    </select>
   </div>
   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
+    <label for="exampleInputPassword1">Pais</label>
+    <select name="country_id" class="form-control" required>
+      <option value="">-- SELECCIONE -- </option>
+    <?php foreach($countries as $c):?>
+      <option value="<?php echo $c->id; ?>" <?php if($c->id==$profile->country_id){ echo "selected"; }?>><?php echo $c->name; ?></option>
+    <?php endforeach;?>
+    </select>
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Situacion Sentimental</label>
+    <select name="sentimental_id" class="form-control" required>
+      <option value="">-- SELECCIONE -- </option>
+    <?php foreach($sentimentals as $c):?>
+      <option value="<?php echo $c->id; ?>" <?php if($c->id==$profile->sentimental_id){ echo "selected"; }?>><?php echo $c->name; ?></option>
+    <?php endforeach;?>
+    </select>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-success">Actualizar Informacion</button>
 </form>
 
     </div>
