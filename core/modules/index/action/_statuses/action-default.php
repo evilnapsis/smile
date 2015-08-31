@@ -1,3 +1,10 @@
+<script type="text/javascript">
+  function loadcomments(t,r){
+    $.post("./?action=loadcomments","t="+t+"&r="+r, function(data){
+      $("#comments-"+t+"-"+r).html(data);
+    });
+  }
+</script>
 <?php 
 
 $from = $params["from"];
@@ -89,13 +96,29 @@ if(file_exists($fullpath)):?>
         <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php endif; ?>
 </p>
+<div id="comments-1-<?php echo $p->id?>"></div>
+<script>
+  loadcomments(1,<?php echo $p->id; ?>);
+</script>
 <?php if($from=="logged"):?>
-<form role="form" id="status">
+<form role="form" id="status-<?php echo $p->id;?>">
   <div class="form-group" style="max-width:100%;">
-
-    <textarea rows="1" name="content" class="form-control" placeholder="Escribe un comentario"></textarea>
+    <input type="hidden" name="t" value="1">
+    <input type="hidden" name="r" value="<?php echo $p->id; ?>">
+    <textarea rows="1" id="ta-<?php echo $p->id; ?>" name="content" class="form-control" placeholder="Escribe un comentario"></textarea>
   </div>
 </form>
+<script>
+  document.getElementById("ta-"+<?php echo $p->id?>).onkeypress = function(e){
+    if(e.keyCode==13){
+      $.post("./?action=addcomment",$("#status-<?php echo $p->id;?>").serialize(), function(data){
+        //console.log(data);
+        document.getElementById("ta-<?php echo $p->id;?>").value ="";
+        loadcomments(1,<?php echo $p->id; ?>);
+      });
+    }
+  }
+</script>
 <?php endif; ?>
       </div>
       </td>

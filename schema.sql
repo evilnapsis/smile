@@ -140,7 +140,7 @@ create table heart(
 	created_at datetime not null,
 	foreign key (user_id) references user(id)
 );
-/*
+
 create table comment(
 	id int not null auto_increment primary key,
 	type_id int not null,
@@ -152,7 +152,7 @@ create table comment(
 	foreign key (user_id) references user(id),
 	foreign key (comment_id) references comment(id)
 );
-*/
+
 create table friend(
 	id int not null auto_increment primary key,
 	sender_id int not null,
