@@ -21,8 +21,20 @@ $url = "storage/users/".$user->id."/profile/".$profile->image;
 <?php else:?>
 <?php if($user->id==Session::$user->id):?>
 <a href="./?view=editinformation" class="btn btn-default btn-xs">Editar Informacion</a>
+<?php else:
+	$fs = FriendData::getFriendship($_SESSION["user_id"], $user->id);
+?>
+<?php if($fs==null):?>
+<a href="./?action=sendfriendreq&recid=<?php echo $user->id; ?>" class="btn btn-default btn-xs">Solicitud de Amistad</a>
 <?php else:?>
-<a href="./?action=sendfriendreq" class="btn btn-default btn-xs">Solicitud de Amistad</a>
+	<?php if($fs->is_accepted):?>
+	<button class="btn btn-primary btn-xs">Amigos</button>
+	<?php else:?>
+	<button class="btn btn-success btn-xs">Solicitud Enviada</button>
+	<?php endif;?>
+<?php endif; ?>
+
+
 <?php endif; ?>
 <?php endif; ?>
 </div>

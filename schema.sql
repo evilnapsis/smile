@@ -140,3 +140,26 @@ create table heart(
 	created_at datetime not null,
 	foreign key (user_id) references user(id)
 );
+/*
+create table comment(
+	id int not null auto_increment primary key,
+	type_id int not null,
+	ref_id int not null,
+	user_id int not null,
+	content text not null,
+	comment_id int,
+	created_at datetime not null,
+	foreign key (user_id) references user(id),
+	foreign key (comment_id) references comment(id)
+);
+*/
+create table friend(
+	id int not null auto_increment primary key,
+	sender_id int not null,
+	receptor_id int,
+	is_accepted boolean not null default 0,
+	is_readed boolean not null default 0,
+	created_at datetime not null,
+	foreign key (sender_id) references user(id),
+	foreign key (receptor_id) references user(id)
+);
