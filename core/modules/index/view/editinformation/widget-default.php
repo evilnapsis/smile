@@ -6,7 +6,7 @@ $profile = ProfileData::getByUserId($_SESSION["user_id"]);
 <div class="container">
 <div class="row">
     <div class="col-md-3">
-<?php Action::execute("_userbadge",array("user"=>Session::$user,"profile"=>Session::$profile ));?>
+<?php Action::execute("_userbadge",array("user"=>Session::$user,"profile"=>Session::$profile ,"from"=>"logged"));?>
 <?php Action::execute("_infomenu",array());?>
 
     </div>

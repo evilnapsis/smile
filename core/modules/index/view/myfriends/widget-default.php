@@ -28,7 +28,7 @@ $frs = FriendData::getFriends($_SESSION["user_id"]);
           ?></td>
           <td style="width:190px;">
           <a href="./?view=user&id=<?php if($fr->sender_id==Session::$user->id){ echo $fr->receptor_id; }else { echo $fr->sender_id; } ?>" class="btn btn-default btn-xs">Ver Perfil</a>
-          <a href="./?action=acceptfriendreq&recid=<?php echo $fr->sender_id; ?>" class="btn btn-default btn-xs">Enviar Mensaje</a>
+          <a href="./?view=sendmsg&id=<?php if($fr->sender_id==Session::$user->id){ echo $fr->receptor_id; }else { echo $fr->sender_id; } ?>" class="btn btn-default btn-xs">Enviar Mensaje</a>
           </td>
         </tr>
       <?php 

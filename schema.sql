@@ -163,3 +163,23 @@ create table friend(
 	foreign key (sender_id) references user(id),
 	foreign key (receptor_id) references user(id)
 );
+
+create table conversation(
+	id int not null auto_increment primary key,
+	sender_id int not null,
+	receptor_id int,
+	created_at datetime not null,
+	foreign key (sender_id) references user(id),
+	foreign key (receptor_id) references user(id)
+);
+
+create table message(
+	id int not null auto_increment primary key,
+	content text not null,
+	user_id int not null,
+	conversation_id int,
+	created_at datetime not null,
+	foreign key (user_id) references user(id),
+	foreign key (conversation_id) references conversation(id)
+);
+
