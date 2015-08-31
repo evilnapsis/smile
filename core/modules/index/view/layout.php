@@ -29,11 +29,16 @@ if(Session::exists("user_id")){
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
+<?php if(!Session::exists("user_id")):?>
           <li><a href="./">INICIO</a></li>
+        <?php else:?>
+          <li><a href="./?view=home">INICIO</a></li>
+        <?php endif; ?>
       </ul>
 
 <ul class="nav navbar-nav navbar-right">
 <?php if(Session::exists("user_id")):?>
+  <li><a href="./?view=friendreqs"><i class="fa fa-male"></i> <?php $fq = FriendData::countUnReads(Session::$user->id); if($fq->c>0){ echo "<span class='label label-danger'>$fq->c</span>";} else{ echo "<span class='label label-default'>0</span>";} ?></a></li>
 <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
         <ul class="dropdown-menu">

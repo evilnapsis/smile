@@ -16,6 +16,9 @@ class FriendData {
 		$this->created_at = "NOW()";
 	}
 
+	public function getSender(){ return UserData::getById($this->sender_id); }
+	public function getReceptor(){ return UserData::getById($this->receptor_id); }
+
 
 	public function add(){
 		$sql = "insert into friend (sender_id,receptor_id,created_at) ";
@@ -34,11 +37,33 @@ class FriendData {
 		Executor::doit($sql);
 	}
 
+	public function accept(){
+		$sql = "update ".self::$tablename." set is_accepted=1 where id=$this->id";
+		Executor::doit($sql);
+	}
+
+	public function read(){
+		$sql = "update ".self::$tablename." set is_readed=1 where id=$this->id";
+		Executor::doit($sql);
+	}
+
 	public static function getById($id){
 		$sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new FriendData());
 	}
+	public static function countUnReads($user_id){
+		$sql = "select count(*) as c from ".self::$tablename." where receptor_id=$user_id and is_readed=0";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new FriendData());
+	}
+
+	public static function countFriends($user_id){
+		$sql = "select count(*) as c from ".self::$tablename." where (sender_id=$user_id or receptor_id=$user_id) and is_accepted=1";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new FriendData());
+	}
+
 
 	public static function getFriendship($user_id,$friend_id){
 		$sql = "select * from ".self::$tablename." where (sender_id=$user_id and receptor_id=$friend_id) or (receptor_id=$user_id and sender_id=$friend_id) ";
@@ -52,6 +77,19 @@ class FriendData {
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new FriendData());
 
+	}
+
+
+	public static function getFriends($user_id){
+		$sql = "select * from ".self::$tablename." where (sender_id=$user_id or receptor_id=$user_id) and is_accepted=1";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new FriendData());
+	}
+
+	public static function getUnAccepteds($user_id){
+		$sql = "select * from ".self::$tablename." where receptor_id=$user_id and is_accepted=0";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new FriendData());
 	}
 	
 	public static function getLike($q){

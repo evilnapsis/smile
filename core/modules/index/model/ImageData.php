@@ -41,7 +41,11 @@ class ImageData {
 		return Model::one($query[0],new ImageData());
 	}
 
-
+	public static function countByUserId($id){
+		$sql = "select count(*) as c from ".self::$tablename." where user_id=$id";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new ImageData());
+	}
 
 	public static function getAll(){
 		$sql = "select * from ".self::$tablename;
