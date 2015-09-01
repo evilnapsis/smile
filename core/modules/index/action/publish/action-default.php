@@ -20,6 +20,7 @@ $handle = new Upload($_FILES['image']);
     		}
 
     $post_id = 0;
+    if($_POST["content"]!=""){
 	$post = new PostData();
 	$post->content = $_POST["content"];
 	$post->level_id = $_POST["level_id"];
@@ -32,6 +33,7 @@ $handle = new Upload($_FILES['image']);
 		$pi->post_id = $post_id[1];
 		$pi->image_id = $image_id[1];
 		$pi->add();
+	}
 	}
 	Core::redir("./?view=home");
 }
