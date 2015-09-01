@@ -16,6 +16,7 @@ class ImageData {
 		$this->created_at = "NOW()";
 	}
 
+	public function getUser(){ return UserData::getByid($this->user_id); }
 	public function getFullpath(){ return "storage/users/".$this->user_id."/images/".$this->src;}
 
 	public function add(){
@@ -51,8 +52,14 @@ class ImageData {
 		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ImageData());
-
 	}
+
+	public static function getAllByUserId($id){
+		$sql = "select * from ".self::$tablename." where user_id=".$id;
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new ImageData());
+	}
+
 	
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";
