@@ -16,8 +16,7 @@ class MessageData {
 		$this->created_at = "NOW()";
 	}
 
-	public function getSender(){ return UserData::getById($this->sender_id); }
-	public function getReceptor(){ return UserData::getById($this->receptor_id); }
+	public function getUser(){ return UserData::getById($this->user_id); }
 
 
 	public function add(){
@@ -58,7 +57,12 @@ class MessageData {
 		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new MessageData());
+	}
 
+	public static function getAllByConversationId($id){
+		$sql = "select * from ".self::$tablename." where conversation_id=".$id;
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new MessageData());
 	}
 
 	public static function getLike($q){

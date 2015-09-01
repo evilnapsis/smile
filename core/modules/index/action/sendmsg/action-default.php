@@ -3,6 +3,7 @@
 if(!empty($_POST)){
 	print_r($_POST);
 	$convid= 0;
+	if($_POST["ref"]=="new"){
 	$conv = ConversationData::getConversation($_SESSION["user_id"],$_POST["receptor_id"]);
 	if($conv==null){
 		$c = new ConversationData();
@@ -13,6 +14,9 @@ if(!empty($_POST)){
 	}else{
 		$convid = $conv->id;
 	}
+	}else if($_POST["ref"]=="conversation"){
+		$convid=$_POST["conversation_id"];
+	}
 
 	$msg = new MessageData();
 	$msg->user_id = $_SESSION["user_id"];
@@ -20,5 +24,12 @@ if(!empty($_POST)){
 	$msg->content = $_POST["content"];
 	$msg->add();
 }
+
+if($_POST["ref"]=="new"){
+	Core::redir("./?view=conversations");
+}else if($_POST["ref"]=="conversation"){
+	Core::redir("./?view=conversation&id=".$convid);
+}
+
 
 ?>

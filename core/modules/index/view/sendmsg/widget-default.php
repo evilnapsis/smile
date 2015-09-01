@@ -18,6 +18,7 @@ $user = UserData::getById($_GET["id"]);
     <label for="exampleInputPassword1">Mensaje</label>
     <textarea class="form-control" name="content" required placeholder="Mensaje" rows="5"></textarea>
   </div>
+  <input type="hidden" name="ref" value="new">
   <input type="hidden" name="receptor_id" value="<?php echo $user->id; ?>">
   <button type="submit" class="btn btn-default">Enviar</button>
 </form>
