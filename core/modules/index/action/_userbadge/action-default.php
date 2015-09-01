@@ -4,6 +4,9 @@ $user = $params["user"];
 $profile = $params["profile"];
 
 $url = "storage/users/".$user->id."/profile/".$profile->image;
+$gotourl = "";
+if($from=="logged" && $user->id==$_SESSION["user_id"]){ $gotourl = "./?view=home"; }
+else{ $gotourl= "./?view=user&id=".$user->id; }
 ?>
 <div class="well">
 <div class="row">
@@ -15,7 +18,7 @@ $url = "storage/users/".$user->id."/profile/".$profile->image;
 <?php endif; ?>
 </div>
 <div class="col-md-8">
-<h5><?php echo $user->getFullname(); ?></h5>
+<h5><a href="<?php echo $gotourl; ?>"><?php echo $user->getFullname(); ?></a></h5>
 <?php if($from=="logout"):?>
 <!-- NO se muestra ningun boton -->
 <?php else:?>
