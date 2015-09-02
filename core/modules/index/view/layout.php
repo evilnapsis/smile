@@ -37,6 +37,17 @@ if(Session::exists("user_id")){
         <?php endif; ?>
       </ul>
 
+<?php if(Session::exists("user_id")):?>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+      <input type="hidden" name="view" value="search">
+        <input type="text" class="form-control" name="q" placeholder="Buscar personas ...">
+      </div>
+      <button type="submit" class="btn btn-default">&nbsp;<i class="fa fa-search"></i>&nbsp;</button>
+    </form>
+<?php endif; ?>
+
+
 <ul class="nav navbar-nav navbar-right">
 <?php if(Session::exists("user_id")):
 $nnots = NotificationData::countUnReads($_SESSION["user_id"]);

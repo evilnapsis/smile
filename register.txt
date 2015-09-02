@@ -1,5 +1,5 @@
 <body><h1>Registro Exitoso</h1>
 					<p>Ahora debes activar tu cuenta en el siguiente link:</p>
-					<p><a href='http://youhost/app/index.php?r=index/processactivation&e=1881d908330bb6fb28ab4e5009df31e49a7e0904&c=1c9150596e8e0b62ee68d52baa288d6f356a82a2'>Activa tu cuenta:</a></p>
-					<p>O tambien puedes usar el siguiente codigo de activacion: otowaj</p>
+					<p><a href='http://youhost/app/index.php?r=index/processactivation&e=efe698fc1ccb0aca50d1cdd8f2bcceb41c372f4f&c=6616c88dc3b440366dec4c6fde425bfc7ad7a632'>Activa tu cuenta:</a></p>
+					<p>O tambien puedes usar el siguiente codigo de activacion: 8oloix</p>
 					</body>

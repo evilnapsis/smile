@@ -90,7 +90,7 @@ class UserData {
 	}
 	
 	public static function getLike($q){
-		$sql = "select * from ".self::$tablename." where name like '%$q%'";
+		$sql = "select * from ".self::$tablename." inner join profile on (user.id=profile.user_id) where name like '%$q%' or lastname like '%$q%' ";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}
