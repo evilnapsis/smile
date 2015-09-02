@@ -10,6 +10,7 @@ if(Session::exists("user_id")){
 <head>
 <title>SMILE :) | Red Social de Proposito General</title>
 <link rel="stylesheet" type="text/css" href="res/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="res/messages.css">
 <script src="res/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="res/font-awesome/css/font-awesome.min.css">
 
@@ -37,8 +38,50 @@ if(Session::exists("user_id")){
       </ul>
 
 <ul class="nav navbar-nav navbar-right">
-<?php if(Session::exists("user_id")):?>
-  <li><a href="./?view=friendreqs"><i class="fa fa-male"></i> <?php $fq = FriendData::countUnReads(Session::$user->id); if($fq->c>0){ echo "<span class='label label-danger'>$fq->c</span>";} else{ echo "<span class='label label-default'>0</span>";} ?></a></li>
+<?php if(Session::exists("user_id")):
+$nnots = NotificationData::countUnReads($_SESSION["user_id"]);
+?>
+<li class="dropdown messages-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="label <?php if($nnots->c>0){ echo "label-danger"; }else{ echo "label-default"; }?>"><?php echo $nnots->c;?></span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <?php if($nnots->c>0):
+              $notifications=NotificationData::getLast5($_SESSION["user_id"]);
+              ?>
+
+                <li class="dropdown-header"><?php echo $nnots->c; ?> Notificaciones</li>
+                <?php foreach($notifications as $noti):
+                $s = $noti->getSender();
+                $sp = ProfileData::getByUserId($s->id);
+                $img_url ="";
+                if($sp->image!=""){
+                $img_url = "storage/users/".$s->id."/profile/".$sp->image;
+                }
+                ?>
+                <li class="message-preview">
+                  <a href="#" >
+                    <span class="avatar"><img src="<?php echo $img_url; ?>" style='width:40px;'></span>
+                    <span class="name"><?php echo $s->getFullname(); ?></span>
+                    <span class="message">
+                    <?php if($noti->not_type_id==1){ echo "<i class='fa fa-thumbs-up'></i> Nuevo Like"; }
+                    else if($noti->not_type_id==2){ echo "<i class='fa fa-comment'></i> Nuevo Comentario"; }
+                    ?>
+                    en 
+                    <?php if($noti->type_id==1){ echo "Publicacion"; }
+                    else if($noti->type_id==2){ echo "Imagen"; }
+                    ?>
+                    </span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+              <?php endforeach; ?>
+              <?php endif; ?>
+                <li><a href="./?view=notifications">Ver notificaciones</a></li>
+              </ul>
+            </li>
+        
+<li><a href="./?view=friendreqs"><i class="fa fa-male"></i> <?php $fq = FriendData::countUnReads(Session::$user->id); if($fq->c>0){ echo "<span class='label label-danger'>$fq->c</span>";} else{ echo "<span class='label label-default'>0</span>";} ?></a></li>
+
 <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>
         <ul class="dropdown-menu">

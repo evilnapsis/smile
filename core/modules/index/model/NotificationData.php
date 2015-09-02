@@ -16,11 +16,11 @@ class NotificationData {
 		$this->created_at = "NOW()";
 	}
 
-//	public function getUser(){ return UserData::getById($this->user_id); }
+	public function getSender(){ return UserData::getById($this->sender_id); }
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (not_type_id,type_id,ref_id,sender_id,receptor_id,created_at) ";
-		echo $sql .= "value ($this->not_type_id,\"$this->type_id\",\"$this->ref_id\",\"$this->sender_id\",\"$this->receptor_id\",NOW())";
+		$sql .= "value ($this->not_type_id,\"$this->type_id\",\"$this->ref_id\",\"$this->sender_id\",\"$this->receptor_id\",NOW())";
 		return Executor::doit($sql);
 	}
 
@@ -35,11 +35,23 @@ class NotificationData {
 		Executor::doit($sql);
 	}
 
+	public function read(){
+		$sql = "update ".self::$tablename." set is_readed=1 where id=$this->id";
+		Executor::doit($sql);
+	}
+
 	public static function getById($id){
 		$sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new NotificationData());
 	}
+
+	public static function countUnReads($id){
+		$sql = "select count(*) as c from ".self::$tablename." where is_readed=0 and receptor_id=$id";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new NotificationData());
+	}
+
 
 	public static function getByRUT($ref_id,$user_id,$type_id){
 		$sql = "select * from ".self::$tablename." where ref_id=$ref_id and user_id=$user_id and type_id=$type_id";
@@ -59,16 +71,16 @@ class NotificationData {
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new NotificationData());
 	}
-	
-	public static function getAllByTR($t,$r){
-		$sql = "select * from ".self::$tablename." where type_id=$t and ref_id=$r";
+
+	public static function getLast5($id){
+		$sql = "select * from ".self::$tablename." where is_readed=0 and receptor_id=$id limit 5";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new NotificationData());
 	}
 
 
-	public static function getAllByPostId($id){
-		$sql = "select * from ".self::$tablename." where post_id=".$id;
+	public static function getAllByUserId($id){
+		$sql = "select * from ".self::$tablename." where receptor_id=".$id;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new NotificationData());
 	}
