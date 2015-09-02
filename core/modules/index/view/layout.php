@@ -133,7 +133,13 @@ $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
 	View::load("index");
 ?>
 <!-- - - - - - - - - - - - - - - -->
+<br><br><br><br><br>
 <div class="container">
+<div class="row">
+<div class="col-md-12">
+<hr/>
+</div>
+</div>
 <div class="row">
 <div class="col-md-3">
 <h4>ENLACES</h4>
