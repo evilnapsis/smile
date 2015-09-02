@@ -38,22 +38,29 @@ $profile = ProfileData::getByUserId($_SESSION["user_id"]);
 </form>
 <br>
 <h1>Cambiar Contrase&ntilde;a</h1>
-<form role="form" method="post" action="./?action=updatepassword" name="changepassword">
+<form role="form" method="post" action="./?action=updatepassword" id="changepassword">
   <div class="form-group">
     <label for="exampleInputEmail1">Contrase&ntilde;a Actual</label>
     <input type="password" required name="password" value="" class="form-control"  placeholder="Contrase&ntilde;a Actual">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Contrase&ntilde;a Nueva</label>
-    <input type="password" required name="new_password" value="" class="form-control"  placeholder="Contrase&ntilde;a Nueva">
+    <input type="password" required name="new_password" id="new_password" value="" class="form-control"  placeholder="Contrase&ntilde;a Nueva">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Configurar Contrase&ntilde;a</label>
-    <input type="password" required name="confirm_password" value="" class="form-control"  placeholder="Configurar Contrase&ntilde;a">
+    <input type="password" required name="confirm_password" id="confirm_password" value="" class="form-control"  placeholder="Configurar Contrase&ntilde;a">
   </div>
-  <button type="submit" class="btn btn-success">Actualizar Contrase&ntilde;</button>
+  <button type="submit" class="btn btn-success">Actualizar Contrase&ntilde;a</button>
 </form>
-
+<script>
+$("#changepassword").submit(function(e){
+  if($("#new_password").val()!=$("#confirm_password").val()){
+    e.preventDefault();
+    alert("Las contrase~as no coinciden");
+  }
+});
+</script>
     </div>
     <div class="col-md-2">
     </div>
