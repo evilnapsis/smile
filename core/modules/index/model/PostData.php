@@ -43,7 +43,7 @@ class PostData {
 	}
 
 	public static function getReceptorId($id){
-		echo $sql = "select receptor_ref_id from ".self::$tablename." where id=$id";
+		echo $sql = "select receptor_ref_id,author_ref_id from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new PostData());
 	}

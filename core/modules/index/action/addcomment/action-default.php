@@ -13,19 +13,22 @@ if(Session::exists("user_id") && !empty($_POST)){
 	$h->add();
 
 	$user_id = null;
+	$author_id = null;
 	if($_POST["t"]==1){
 	$post = PostData::getReceptorId($_POST["r"]);
 	$user_id = $post->receptor_ref_id;
+	$author_id = $post->author_ref_id;
 	}
-//	print_r($_)
 
-	$notification = new NotificationData();
-	$notification->not_type_id=2; // comment
-	$notification->type_id = $_POST["t"]; // al mismo que nos referenciamos en al crear el comentario
-	$notification->ref_id = $_POST["r"]; // =
-	$notification->user_id = $user_id; // en este caso nos referimos a quien va dirigida la notificacion
-	$notification->author_id = $_SESSION["user_id"]; // ahora al usuario implicado
-	$notification->add();
+	if($author_id!=$_SESSION["user_id"] && $user_id!=$_SESSION["user_id"]){ // si es el mismo autor del post, entonces no le notificamos
+		$notification = new NotificationData();
+		$notification->not_type_id=2; // comment
+		$notification->type_id = $_POST["t"]; // al mismo que nos referenciamos en al crear el comentario
+		$notification->ref_id = $_POST["r"]; // =
+		$notification->user_id = $user_id; // en este caso nos referimos a quien va dirigida la notificacion
+		$notification->author_id = $_SESSION["user_id"]; // ahora al usuario implicado
+		$notification->add();
+	}
 
 
 	}
