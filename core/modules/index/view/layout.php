@@ -45,6 +45,7 @@ if(Session::exists("user_id")){
           <li><a href="./?view=home">Perfil</a></li>
           <li><a href="./?view=user&id=<?php echo Session::$user->id; ?>">Perfil Publico</a></li>
           <li><a href="./?view=editinformation">Editar Informacion</a></li>
+          <li><a href="./?view=configuration">Configuraci&oacute;n</a></li>
           <li class="divider"></li>
           <li><a href="./?action=processlogout">Salir</a></li>
         </ul>
