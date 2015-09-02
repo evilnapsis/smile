@@ -2,8 +2,8 @@
 * @author evilnapsis
 * @brief Modelo de la base de datos
 **/
-create database smile2;
-use smile2;
+create database smile;
+use smile;
 
 create table user(
 	id int not null auto_increment primary key,

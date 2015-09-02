@@ -35,9 +35,10 @@
 					</body>";
 	
 					mail($_POST["email"], "Registro Exitoso", $msg);
-					$f = fopen (ROOT."/register.txt","w");
+					/* $f = fopen (ROOT."/register.txt","w");
 					fwrite($f, $msg);
 					fclose($f);
+					*/
 					Core::alert("Registro Exitoso!, se ha enviado un correo electronico con los datos necesarios para activar su cuenta.");
 					Core::redir("./");
 				}else{
