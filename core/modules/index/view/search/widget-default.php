@@ -31,6 +31,10 @@
           </tr>
         <?php endforeach; ?>
       </table>
+    <?php else:?>
+      <div class="jumbotron">
+      <h2>No hay Resultados</h2>
+      </div>
     <?php endif; ?>
     </div>
     <div class="col-md-2">
