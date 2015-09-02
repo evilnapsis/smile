@@ -149,7 +149,13 @@ $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
 </ul>
 </div>
 </div>
+<div class="row">
+<div class="col-md-12">
+<p>Evilnapsis &copy; 2015. Todos los Derechos Reservados</p>
 </div>
+</div>
+</div>
+<br>
 <script src="res/jquery.min.js"></script>
 <script src="res/bootstrap/js/bootstrap.min.js"></script>
 </body>
