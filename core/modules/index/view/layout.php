@@ -144,6 +144,7 @@ $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
 <div class="col-md-3">
 <h4>ENLACES</h4>
 <ul>
+  <li><a href="./?view=about">Acerca de SMILE</a></li>
   <li><a href="./?view=changelog">Log de Cambios</a></li>
   <li><a href="http://evilnapsis.com">Evilnapsis HomePage</a></li>
 </ul>
