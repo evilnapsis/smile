@@ -12,8 +12,7 @@ $profile = ProfileData::getByUserId($_SESSION["user_id"]);
     </div>
     <div class="col-md-7">
 <h1>Configuracion</h1>
-
-<form role="form" enctype="multipart/form-data" method="post" action="./?action=updateconfiguration">
+<form role="form" method="post" action="./?action=updateconfiguration">
   <div class="form-group">
     <label for="exampleInputEmail1">Nombre de usuario</label>
     <input type="text" name="username" value="<?php echo Session::$user->username; ?>" class="form-control"  placeholder="Tu nombre de usuario">
@@ -36,6 +35,23 @@ $profile = ProfileData::getByUserId($_SESSION["user_id"]);
     </label>
   </div>
   <button type="submit" class="btn btn-success">Actualizar Configuacion</button>
+</form>
+<br>
+<h1>Cambiar Contrase&ntilde;a</h1>
+<form role="form" method="post" action="./?action=updatepassword" name="changepassword">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Contrase&ntilde;a Actual</label>
+    <input type="password" required name="password" value="" class="form-control"  placeholder="Contrase&ntilde;a Actual">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Contrase&ntilde;a Nueva</label>
+    <input type="password" required name="new_password" value="" class="form-control"  placeholder="Contrase&ntilde;a Nueva">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Configurar Contrase&ntilde;a</label>
+    <input type="password" required name="confirm_password" value="" class="form-control"  placeholder="Configurar Contrase&ntilde;a">
+  </div>
+  <button type="submit" class="btn btn-success">Actualizar Contrase&ntilde;</button>
 </form>
 
     </div>
