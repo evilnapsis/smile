@@ -59,7 +59,7 @@ if(file_exists($fullpath)):?>
 </p>
 <div id="comments-2-<?php echo $p->id?>"></div>
 <script>
-  loadcomments(1,<?php echo $p->id; ?>);
+  loadcomments(2,<?php echo $p->id; ?>);
 </script>
 <?php if($from=="logged"):?>
 <form role="form" id="status-<?php echo $p->id;?>">
@@ -73,7 +73,7 @@ if(file_exists($fullpath)):?>
   document.getElementById("ta-"+<?php echo $p->id?>).onkeypress = function(e){
     if(e.keyCode==13){
       $.post("./?action=addcomment",$("#status-<?php echo $p->id;?>").serialize(), function(data){
-        //console.log(data);
+        console.log(data);
         document.getElementById("ta-<?php echo $p->id;?>").value ="";
         loadcomments(2,<?php echo $p->id; ?>);
       });
