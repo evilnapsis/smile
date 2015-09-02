@@ -183,3 +183,19 @@ create table message(
 	foreign key (conversation_id) references conversation(id)
 );
 
+/*
+not_type_id: 
+1.- like, 2.- comment
+type:
+1.- post, 2.- image
+*/
+create table notification(
+	id int not null auto_increment primary key,
+	not_type_id int not null,
+	type_id int not null,
+	ref_id int not null,
+	user_id int not null,
+	author_id int not null,
+	foreign key (author_id) references author(id),
+	foreign key (user_id) references user(id)
+);
