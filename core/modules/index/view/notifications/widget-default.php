@@ -34,7 +34,7 @@ $notifications = NotificationData::getAllByUserId($_SESSION["user_id"]);
       </table>
     <?php else:?>
       <div class="jumbotron">
-      <h2>No hay solicitudes</h2>
+      <h2>No hay notificaciones</h2>
       </div>
     <?php endif;?>
     </div>

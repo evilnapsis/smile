@@ -33,7 +33,7 @@ else{ $gotourl= "./?view=user&id=".$user->id; }
 	<?php if($fs->is_accepted):?>
 	<button class="btn btn-primary btn-xs">Amigos</button>
 	<?php else:?>
-		<?php if($_SESSION["user_id"]==$user->id):?>
+		<?php if($_SESSION["user_id"]!=$user->id):?>
 	<button class="btn btn-success btn-xs">Solicitud Enviada</button>
 	<?php else:
 	$fs->read();
