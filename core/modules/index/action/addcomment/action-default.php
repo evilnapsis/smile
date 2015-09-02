@@ -30,8 +30,8 @@ if(Session::exists("user_id") && !empty($_POST)){
 		$notification->not_type_id=2; // comment
 		$notification->type_id = $_POST["t"]; // al mismo que nos referenciamos en al crear el comentario
 		$notification->ref_id = $_POST["r"]; // =
-		$notification->user_id = $user_id; // en este caso nos referimos a quien va dirigida la notificacion
-		$notification->author_id = $_SESSION["user_id"]; // ahora al usuario implicado
+		$notification->receptor_id = $user_id; // en este caso nos referimos a quien va dirigida la notificacion
+		$notification->sender_id = $_SESSION["user_id"]; // ahora al usuario implicado
 		$notification->add();
 	}
 

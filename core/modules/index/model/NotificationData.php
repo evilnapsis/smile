@@ -16,11 +16,11 @@ class NotificationData {
 		$this->created_at = "NOW()";
 	}
 
-	public function getUser(){ return UserData::getById($this->user_id); }
+//	public function getUser(){ return UserData::getById($this->user_id); }
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (not_type_id,type_id,ref_id,user_id,author_id,created_at) ";
-		echo $sql .= "value ($this->not_type_id,\"$this->type_id\",\"$this->ref_id\",\"$this->user_id\",\"$this->author_id\",NOW())";
+		$sql = "insert into ".self::$tablename." (not_type_id,type_id,ref_id,sender_id,receptor_id,created_at) ";
+		echo $sql .= "value ($this->not_type_id,\"$this->type_id\",\"$this->ref_id\",\"$this->sender_id\",\"$this->receptor_id\",NOW())";
 		return Executor::doit($sql);
 	}
 

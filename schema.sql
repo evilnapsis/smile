@@ -194,10 +194,11 @@ create table notification(
 	not_type_id int not null,
 	type_id int not null,
 	ref_id int not null,
-	user_id int not null,
-	author_id int not null,
+	receptor_id int not null,
+	sender_id int not null,
 	is_readed boolean not null default 0,
 	created_at datetime not null,
-	foreign key (author_id) references user(id),
-	foreign key (user_id) references user(id)
+	foreign key (sender_id) references user(id),
+	foreign key (receptor_id) references user(id)
 );
+
