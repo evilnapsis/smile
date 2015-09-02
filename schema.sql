@@ -196,6 +196,8 @@ create table notification(
 	ref_id int not null,
 	user_id int not null,
 	author_id int not null,
-	foreign key (author_id) references author(id),
+	is_readed boolean not null default 0,
+	created_at datetime not null,
+	foreign key (author_id) references user(id),
 	foreign key (user_id) references user(id)
 );

@@ -112,7 +112,7 @@ if(file_exists($fullpath)):?>
   document.getElementById("ta-"+<?php echo $p->id?>).onkeypress = function(e){
     if(e.keyCode==13){
       $.post("./?action=addcomment",$("#status-<?php echo $p->id;?>").serialize(), function(data){
-        //console.log(data);
+        console.log(data);
         document.getElementById("ta-<?php echo $p->id;?>").value ="";
         loadcomments(1,<?php echo $p->id; ?>);
       });
