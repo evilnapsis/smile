@@ -11,13 +11,11 @@ $profile = ProfileData::getByUserId($_GET["id"]);
 <?php 
 $from = "logout";
 if(isset($_SESSION["user_id"])){ $from="logged"; }
-Action::execute("_userbadge",array("user"=>$user,"profile"=>$profile ,"from"=>$from));?>
+Action::execute("_userbadge",array("user"=>$user,"profile"=>$profile ,"from"=>$from));
+Action::execute("_usermenu",array("user"=>$user,"from"=>$from));
+?>
 
-<div class="list-group">
-  <a href="./?view=userinfo&uid=<?php echo $user->id; ?>" class="list-group-item">Informacion</a>
-  <a href="./?view=friends&uid=<?php echo $user->id; ?>" class="list-group-item">Amigos</a>
-  <a href="./?view=photos&uid=<?php echo $user->id; ?>" class="list-group-item">Fotos</a>
-</div>
+
     </div>
     <div class="col-md-7">
 
