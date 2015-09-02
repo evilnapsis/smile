@@ -14,6 +14,7 @@ Defino a grandes rasgos los modulos generales del sistema
 - Publicaciones
 - Perfiles
 - Likes
+- Comentarios
 - Imagenes
 - Amigos
 - Mensajes
@@ -24,3 +25,4 @@ Todavia no lo he probado al 100%, pero escribo algunas cosas que no he programad
 
 - Modulo de super administrador: permitira tener el control total de todo el sistema, no desarrollado.
 - Notificaciones por correo: el sistema no envia ninguna notificacion al correo, para nada.
+- Privacidad: Otros usuarios pueden ver y comentar aun sin ser amigos.
