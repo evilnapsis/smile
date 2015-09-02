@@ -11,6 +11,7 @@ if(isset($_SESSION["user_id"]) && !empty($_POST)){
 
 			$user->password = sha1(md5($_POST["new_password"]));
 			$user->update_passwd();
+			$_SESSION["password_updated"]=true;
 			Core::alert("La contrase~a ha sido actualizada exitosamente!");
 			Core::redir("./?view=configuration");			
 

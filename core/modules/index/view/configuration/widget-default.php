@@ -12,6 +12,9 @@ $profile = ProfileData::getByUserId($_SESSION["user_id"]);
     </div>
     <div class="col-md-7">
 <h1>Configuracion</h1>
+<?php
+Session::alert("password_updated","Contrase&ntilde;a actualizada exitosamente!","success");
+?>
 <form role="form" method="post" action="./?action=updateconfiguration">
   <div class="form-group">
     <label for="exampleInputEmail1">Nombre de usuario</label>

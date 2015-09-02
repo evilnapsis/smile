@@ -25,6 +25,16 @@ class Session {
 		return false;
 	}
 
+	/*
+	* type: success, info, warning, danger
+	*/
+	public static function alert($name, $message, $type){
+		if(isset($_SESSION[$name])){
+			echo "<p class='alert alert-$type'>$message</p>";
+			unset($_SESSION[$name]);
+		}
+	}
+
 	public static function set($key,$value){
 		$_SESSION[$key]=$value;
 
