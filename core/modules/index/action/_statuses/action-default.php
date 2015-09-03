@@ -33,7 +33,7 @@ if($pf->image!=""):?>
 <p style="margin:0px;margin-left:48px;font-size:10px;" class="text-muted"><?php echo date("d/M/Y h:i:s",strtotime($p->created_at));?></p>
 <div class="clearfix"></div>
       <hr style="margin:5px;">
-        <p><?php echo $p->content; ?></p>
+        <p style="font-size:12px;"><?php echo $p->content; ?></p>
 <?php 
 $pis = PostImageData::getAllByPostId($p->id);
 if(count($pis)==1):?>
@@ -66,9 +66,9 @@ if(file_exists($fullpath)):?>
         if($l!=null){ $b="btn-primary";}
         ?>
         <?php if($l!=null):?>
-        <a href="javascript:void()" onclick="like(2,<?php echo $pi->image_id; ?>)" id="ilk-<?php echo $p->id; ?>" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+        <a href="javascript:void()" onclick="like(2,<?php echo $pi->image_id; ?>)" id="ilk-<?php echo $p->id; ?>" class="btn btn-xs <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php else:?>
-        <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+        <a href="javascript:void()" class="btn btn-xs <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php endif; ?>
 </p>
         </div>
@@ -80,7 +80,7 @@ if(file_exists($fullpath)):?>
 <br><?php endif; ?>
 <?php endforeach;?>
 <?php endif; ?>
-        <p>
+        <p >
         <?php 
         $l=null;
         if($from=="logged"){
@@ -91,9 +91,9 @@ if(file_exists($fullpath)):?>
         if($l!=null){ $b="btn-primary";}
         ?>
         <?php if($l==null):?>
-        <a href="javascript:void()" onclick="like(1,<?php echo $p->id; ?>)" id="lk-<?php echo $p->id; ?>" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+        <a href="javascript:void()" onclick="like(1,<?php echo $p->id; ?>)" id="lk-<?php echo $p->id; ?>" class="btn btn-xs <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php else:?>
-        <a href="javascript:void()" class="btn btn-sm <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
+        <a href="javascript:void()" class="btn btn-xs <?php echo $b; ?>"><i class="fa fa-thumbs-up"></i> <?php if($c>0){ echo $c;}?></a>
       <?php endif; ?>
 </p>
 <div id="comments-1-<?php echo $p->id?>"></div>
