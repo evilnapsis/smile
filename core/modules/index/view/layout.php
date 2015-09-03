@@ -57,7 +57,6 @@ foreach ($conversations as $conversation) {
 //  print_r($nmsg);
   $nmsgs += $nmsg->c;
 }
-echo $nmsgs;
 $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
 ?>
 <li class="dropdown messages-dropdown">
