@@ -111,6 +111,7 @@ if(file_exists($fullpath)):?>
 <script>
   document.getElementById("ta-"+<?php echo $p->id?>).onkeypress = function(e){
     if(e.keyCode==13){
+    e.preventDefault();
       $.post("./?action=addcomment",$("#status-<?php echo $p->id;?>").serialize(), function(data){
         document.getElementById("ta-<?php echo $p->id;?>").value ="";
         loadcomments(1,<?php echo $p->id; ?>);
