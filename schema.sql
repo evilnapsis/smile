@@ -179,6 +179,7 @@ create table message(
 	user_id int not null,
 	conversation_id int,
 	created_at datetime not null,
+	is_readed boolean not null default 0,
 	foreign key (user_id) references user(id),
 	foreign key (conversation_id) references conversation(id)
 );

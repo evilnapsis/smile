@@ -52,6 +52,11 @@ class MessageData {
 		return Model::one($query[0],new MessageData());
 	}
 
+	public static function countUnReadsByUC($uid,$id){
+		$sql = "select count(*) as c from ".self::$tablename." where is_readed=0 and user_id!=$uid and conversation_id=$id";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new MessageData());
+	}
 
 	public static function getAll(){
 		$sql = "select * from ".self::$tablename;

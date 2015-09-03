@@ -50,6 +50,14 @@ if(Session::exists("user_id")){
 
 <ul class="nav navbar-nav navbar-right">
 <?php if(Session::exists("user_id")):
+$conversations = ConversationData::getConversations($_SESSION["user_id"]);
+$nmsgs = 0;
+foreach ($conversations as $conversation) {
+  $nmsg = MessageData::countUnReadsByUC($_SESSION["user_id"],$conversation->id);
+//  print_r($nmsg);
+  $nmsgs += $nmsg->c;
+}
+echo $nmsgs;
 $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
 ?>
 <li class="dropdown messages-dropdown">
@@ -92,6 +100,7 @@ $nnots = NotificationData::countUnReads($_SESSION["user_id"]);
             </li>
         
 <li><a href="./?view=friendreqs"><i class="fa fa-male"></i> <?php $fq = FriendData::countUnReads(Session::$user->id); if($fq->c>0){ echo "<span class='label label-danger'>$fq->c</span>";} else{ echo "<span class='label label-default'>0</span>";} ?></a></li>
+<li><a href="./?view=conversations"><i class="fa fa-envelope-o"></i> <?php if($nmsgs>0){ echo "<span class='label label-danger'>$nmsgs</span>";} else{ echo "<span class='label label-default'>0</span>";} ?></a></li>
 
 <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo Session::$user->name;?> <b class="caret"></b></a>

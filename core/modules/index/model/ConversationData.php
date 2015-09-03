@@ -22,7 +22,7 @@ class ConversationData {
 
 	public function add(){
 		$sql = "insert into conversation (sender_id,receptor_id,created_at) ";
-		echo $sql .= "value (\"$this->sender_id\",\"$this->receptor_id\",$this->created_at)";
+		$sql .= "value (\"$this->sender_id\",\"$this->receptor_id\",$this->created_at)";
 		return Executor::doit($sql);
 	}
 
@@ -59,7 +59,6 @@ class ConversationData {
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ConversationData());
 	}
-
 
 	public static function getConversations($user_id){
 		$sql = "select * from ".self::$tablename." where sender_id=$user_id or receptor_id=$user_id";

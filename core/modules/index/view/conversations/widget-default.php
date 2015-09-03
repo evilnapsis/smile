@@ -17,8 +17,13 @@ $frs = ConversationData::getConversations($_SESSION["user_id"]);
       <?php foreach($frs as $fr):?>
         <tr>
           <td>
-          <?php  
-           echo "<a href='./?view=conversation&id=$fr->id'>";
+
+          <?php
+   $nmsg = MessageData::countUnReadsByUC($_SESSION["user_id"],$fr->id);
+          $color = "label-default";
+          if($nmsg->c>0){ $color="label-danger"; }
+   echo "<span class='label $color pull-right'>".$nmsg->c."</span>";
+          echo "<a href='./?view=conversation&id=$fr->id'>";
 
           if($fr->receptor_id==Session::$user->id){
           echo $fr->getSender()->getFullname();
