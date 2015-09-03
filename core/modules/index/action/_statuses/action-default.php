@@ -125,4 +125,8 @@ if(file_exists($fullpath)):?>
 <?php endforeach;?>
 </table>
 </div>
+<?php else:?>
+  <div class="jumbotron">
+  <h2>No hay publicaciones</h2>
+  </div>
 <?php endif;?>
