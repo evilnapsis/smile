@@ -33,7 +33,7 @@ if($pf->image!=""):?>
 <p style="margin:0px;margin-left:48px;font-size:10px;" class="text-muted"><?php echo date("d/M/Y h:i:s",strtotime($p->created_at));?></p>
 <div class="clearfix"></div>
       <hr style="margin:5px;">
-        <p style="font-size:12px;"><?php echo $p->content; ?></p>
+        <p style="font-size:14px;"><?php echo $p->content; ?></p>
 <?php 
 $pis = PostImageData::getAllByPostId($p->id);
 if(count($pis)==1):?>
