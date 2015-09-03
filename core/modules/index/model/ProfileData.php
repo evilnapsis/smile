@@ -45,7 +45,7 @@ class ProfileData {
 	}
 
 	public function update_basic(){
-echo		$sql = "update ".self::$tablename." set day_of_birth=\"$this->day_of_birth\",gender=\"$this->gender\",country_id=\"$this->country_id\",sentimental_id=\"$this->sentimental_id\" where user_id=$this->user_id";
+		$sql = "update ".self::$tablename." set day_of_birth=\"$this->day_of_birth\",gender=\"$this->gender\",country_id=\"$this->country_id\",sentimental_id=\"$this->sentimental_id\" where user_id=$this->user_id";
 		Executor::doit($sql);
 	}
 

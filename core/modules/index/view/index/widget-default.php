@@ -3,6 +3,7 @@
 <div class="col-md-8">
 <h2>SMILE - Red Social</h2>
 <p>SMILE es un sistema de red social de proposito general, codigo abierto y gratis.</p>
+<img src="res/main.png">
 <h3>Descripcion</h3>
 <p>SMILE es un sistema de red social en el que puedes rellenar tu perfil, hacer publicaciones de texto y/o imagenes, buscar amigos, enviar, recibir y aceptar solicitudes de amistad, enviar mensajes a amigos, comentar y/o dar likes a las publicaciones, recibir notificaciones y mucho mas.</p>
 

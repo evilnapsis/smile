@@ -11,7 +11,7 @@ if(!empty($_POST)){
 
 
 $profile->update_basic();
-//Core::redir("./?view=editbasicinfo");
+Core::redir("./?view=editbasicinfo");
 }
 
 

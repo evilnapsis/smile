@@ -6,10 +6,15 @@
 <h4>v1.0</h4>
 <p><b>Modulos</b></p>
 <ul>
-	<li>Modulo de usuarios</li>
-	<li>Modulo de statuses</li>
-	<li>Modulo de imagenes</li>
-	<li>Modulo de notificaciones</li>
+	<li>Usuarios</li>
+	<li>Publicaciones</li>
+	<li>Perfiles</li>
+	<li>Likes</li>
+	<li>Comentarios</li>
+	<li>Imagenes</li>
+	<li>Amigos</li>
+	<li>Mensajes</li>
+	<li>Notificaciones</li>
 </ul>
 
 <p><b>Caracteristicas</b></p>
