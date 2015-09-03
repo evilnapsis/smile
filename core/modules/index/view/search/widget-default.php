@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION["user_id"])){ Core::redir("./");}?>
 <div class="container">
 <div class="row">
     <div class="col-md-3">

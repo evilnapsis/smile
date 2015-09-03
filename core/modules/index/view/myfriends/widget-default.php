@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION["user_id"])){ Core::redir("./");}?>
 <?php
 $frs = FriendData::getFriends($_SESSION["user_id"]);
 ?>
