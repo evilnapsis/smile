@@ -203,3 +203,14 @@ create table notification(
 	foreign key (sender_id) references user(id),
 	foreign key (receptor_id) references user(id)
 );
+
+/* para grupos: no puedo usar la palabra reservada group, entonces uso team */
+create table team (
+	id int not null auto_increment primary key,
+	title varchar(200) not null,
+	description varchar(500) not null,
+	user_id int not null,
+	status int not null default 1 /* 1.- open, 2.- closed */,
+	created_at datetime not null,
+	foreign key (user_id) references user(id)
+);
