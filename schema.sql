@@ -52,8 +52,8 @@ create table sentimental(
 insert into sentimental(name) values ("Soltero"),("Casado");
 
 create table profile(
-	day_of_birth date not null,
-	gender varchar(1) not null,
+	day_of_birth date ,
+	gender varchar(1) ,
 	country_id int ,
 	image varchar(255),
 	image_header varchar(255),
@@ -61,10 +61,10 @@ create table profile(
 	bio varchar(255),
 	likes text,
 	dislikes text,
-	address varchar(255) not null,
-	phone varchar(255) not null,
-	public_email varchar(255) not null,
-	user_id int not null,
+	address varchar(255) ,
+	phone varchar(255) ,
+	public_email varchar(255) ,
+	user_id int ,
 	level_id int ,
 	sentimental_id int ,
 	foreign key (sentimental_id) references sentimental(id),
@@ -106,10 +106,10 @@ create table image(
 **/
 create table post(
 	id int not null auto_increment primary key,
-	title int not null,
+	title varchar(500) ,
 	content text not null,
-	lat double not null,
-	lng double not null,
+	lat double ,
+	lng double ,
 	start_at datetime,
 	finish_at datetime,
 	author_ref_id int not null,
