@@ -43,7 +43,7 @@ $frs = ConversationData::getConversations($_SESSION["user_id"]);
       </table>
     <?php else:?>
       <div class="jumbotron">
-      <h2>No hay Amigos</h2>
+      <h2>No hay Mensajes</h2>
       </div>
     <?php endif;?>
     </div>
