@@ -16,8 +16,8 @@ class PostData {
 	public function getReceptor(){ return UserData::getById($this->receptor_ref_id); }
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (content,author_ref_id,receptor_ref_id,level_id,created_at) ";
-		$sql .= "value (\"$this->content\",\"$this->author_ref_id\",$this->receptor_ref_id,1,$this->created_at)";
+		$sql = "insert into ".self::$tablename." (content,author_ref_id,receptor_type_id,receptor_ref_id,level_id,created_at) ";
+		$sql .= "value (\"$this->content\",\"$this->author_ref_id\",$this->receptor_type_id,$this->receptor_ref_id,1,$this->created_at)";
 		return Executor::doit($sql);
 	}
 
@@ -56,7 +56,13 @@ class PostData {
 	}
 
 	public static function getAllByUserId($user_id){
-		$sql = "select * from ".self::$tablename." where author_ref_id=$user_id or receptor_ref_id=$user_id order by created_at desc";
+		$sql = "select * from ".self::$tablename." where (author_ref_id=$user_id or receptor_ref_id=$user_id) and receptor_type_id=1 order by created_at desc";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new PostData());
+	}
+
+	public static function getAllByUserIdTeamId($user_id,$team_id){
+		$sql = "select * from ".self::$tablename." where author_ref_id=$user_id and receptor_ref_id=$team_id and receptor_type_id=2 order by created_at desc";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new PostData());
 	}

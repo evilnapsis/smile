@@ -112,7 +112,7 @@ create table post(
 	lng double ,
 	start_at datetime,
 	finish_at datetime,
-	wall_ref_id int not null default 1, /* 1.- user, 2.- group **/
+	receptor_type_id int not null default 1, /* 1.- user, 2.- group **/
 	author_ref_id int not null,
 	receptor_ref_id int not null,
 	level_id int not null,
