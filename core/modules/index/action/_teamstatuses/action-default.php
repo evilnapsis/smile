@@ -33,7 +33,17 @@ if($pf->image!=""):?>
 <p style="margin:0px;margin-left:48px;font-size:10px;" class="text-muted"><?php echo date("d/M/Y h:i:s",strtotime($p->created_at));?></p>
 <div class="clearfix"></div>
       <hr style="margin:5px;">
-        <p style="font-size:14px;"><?php echo $p->content; ?></p>
+
+<?php
+
+$url = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/';   
+$content= preg_replace($url, '<a href="$0" target="_blank" title="$0">$0</a>', $p->content);
+
+?>
+<p style="font-size:14px;"><?php echo $content; ?></p>
+
+
+
 <?php 
 $pis = PostImageData::getAllByPostId($p->id);
 if(count($pis)==1):?>
