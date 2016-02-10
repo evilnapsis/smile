@@ -5,7 +5,7 @@
 **/
 
 if(Session::exists("user_id") && !empty($_POST)){
-/*
+
 $image = null;
 $image_id = 0;
 $handle = new Upload($_FILES['image']);
@@ -19,7 +19,7 @@ $handle = new Upload($_FILES['image']);
             	$image->user_id = $_SESSION["user_id"];
             	$image_id = $image->add();
     		}
-*/
+
     $post_id = 0;
     if($_POST["content"]!=""){
 	$post = new PostData();
@@ -29,14 +29,14 @@ $handle = new Upload($_FILES['image']);
 	$post->receptor_type_id = 2;
 	$post->receptor_ref_id = $_POST["receptor_ref_id"];
 	$post_id= $post->add();
-/*
+
 	if($handle->uploaded){
 		$pi = new PostImageData();
 		$pi->post_id = $post_id[1];
 		$pi->image_id = $image_id[1];
 		$pi->add();
-	}*/
 	}
-	Core::redir("./?view=home");
+	}
+	Core::redir("./?view=team&id=$_POST[receptor_ref_id]");
 }
 ?>

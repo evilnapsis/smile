@@ -30,8 +30,10 @@ $frs = TeamData::getAllByUserId($_SESSION["user_id"]);
       </thead>
       <?php foreach($frs as $fr):?>
         <tr>
-        <td style="width:30px;">
+        <td style="width:105px;">
           <a href="./?view=team&id=<?php echo $fr->id;?>" class="btn btn-default btn-xs"> <i class="fa fa-chevron-right"></i></a>
+          <a href="./?view=editteam&id=<?php echo $fr->id;?>" class="btn btn-default btn-xs"> <i class="fa fa-edit"></i></a>
+          <a href="./?view=configteam&id=<?php echo $fr->id;?>" class="btn btn-default btn-xs"> <i class="fa fa-cogs"></i></a>
         </td>
           <td>
           <?php echo $fr->title;?>

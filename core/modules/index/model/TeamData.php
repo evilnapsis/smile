@@ -31,7 +31,7 @@ class TeamData {
 
 // partiendo de que ya tenemos creado un objecto TeamData previamente utilizamos el contexto
 	public function update(){
-		$sql = "update ".self::$tablename." set name=\"$this->name\" where id=$this->id";
+		$sql = "update ".self::$tablename." set image=\"$this->image\",title=\"$this->title\",description=\"$this->description\" where id=$this->id";
 		Executor::doit($sql);
 	}
 
